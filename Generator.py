@@ -1,9 +1,9 @@
 import pygame
 from random import randint
 
-#initializing the screen on which the images are created
+#initializing the window on which the images are created
 pygame.init()
-screen = pygame.display.set_mode((300,300))
+window = pygame.display.set_mode((300,300))
 
 #function for checking intersection
 def isIntersecting(x,y):
@@ -16,7 +16,7 @@ def isIntersecting(x,y):
 image_count = int(input("How many images do you want?"))
 
 while image_count > 0:
-    screen.fill((255,255,255))
+    window.fill((255,255,255))
 
     #initialize the random number of circs
     no = randint(2,10)
@@ -31,7 +31,7 @@ while image_count > 0:
             x=randint(30, 270)
             y=randint(30, 270)
 
-        pygame.draw.circle(screen, (0,0,255), (x, y), 15, 0)
+        pygame.draw.circle(window, (0,0,255), (x, y), 15, 0)
         coordinates.append([x,y])
         pygame.display.update()
 
@@ -39,6 +39,7 @@ while image_count > 0:
     print(no)
 
     print(coordinates[1][1])
-    input()
+    pygame.image.save(window, str(no)+"circs_"+str(image_count)+"imagenumber.jpeg")
+    #input()
 
     image_count-=1
